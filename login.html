@@ -1,0 +1,57 @@
+
+    <main class="bg-body-secondary py-3">
+        <div class="container mx-auto p-0">
+            <h2 class="bg-white p-3 py-2 mb-3 rounded-2">Đăng nhập</h2>
+        </div>
+        <div class="container mx-auto rounded-2 row justify-content-between bg-white p-3">
+            <img src="./img/login.png" alt="" class="col-6 d-md-block d-none object-fit-contain">
+            <div class="col-md-4 col-12 p-0"> 
+                <form class="bg-white border border-primary p-3 rounded-2" name="login" ng-submit="checkAcc(username, password)">
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Tên đăng nhập</label>
+                        <input type="text" class="form-control" id="username" aria-describedby="username" ng-model="username" name="username" placeholder="Tên đăng nhập" pattern="^[a-zA-Z0-9]+([._]?[a-zA-Z0-9]+)*$" required>
+                        <span class="text-danger fs-12px" ng-if="login.username.$invalid">Tên đăng nhập không được để trống và viết liền không dấu</span>
+                        <span class="text-success fs-12px" ng-if="login.username.$valid">Tên đăng nhập <i class="fa-solid fa-check"></i></span>
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Mật khẩu</label>
+                        <input type="password" class="form-control" id="password" name="password" ng-model="password" placeholder="Mật khẩu" required>
+                        <span class="text-danger fs-12px" ng-if="login.password.$invalid">Mật khẩu là bắt buộc</span>
+                        <span class="text-success fs-12px" ng-if="login.password.$valid">Mật khẩu <i class="fa-solid fa-check"></i></span>
+                    </div>
+                    <div class="mb-3 form-check">
+                        
+                        <label class="form-check-label" for="exampleCheck1"><input type="checkbox" class="form-check-input" ng-model="exampleCheck1" id="exampleCheck1">Tôi đồng ý với tất cả các điều khoảng và dịch vụ.</label><br>
+                        <span class="text-danger fs-12px" ng-if="exampleCheck1 == false">Bạn chưa đồng ý với điều khoảng và dịch vụ của chúng tôi</span>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">Đăng nhập</button>
+                    <div class="d-flex justify-content-between mt-2">
+                        <a href="" class="text-decoration-none fs-13px">Quên mật khẩu</a>
+                        <a href="" class="text-decoration-none fs-13px">Đăng nhập với SMS</a>
+                    </div>
+                    <div class="d-flex justify-content-between mt-2">
+                        <button type="button" class="btn btn-outline-primary w-49">
+                            <img src="./img/facebook.png" class="me-2" width="20" alt="">
+                            <span class="">Facebook</span>
+                        </button>
+                        <button type="button" class="btn btn-outline-primary w-49">
+                            <img src="./img/google.png" class="me-2" width="20" alt="">
+                            <span class="">Google</span>
+                        </button>
+                    </div>
+                    <div class="d-flex justify-content-center mt-2">
+                        <span class="text-secondary me-2">Bạn mới biết đến Tiki? </span>
+                        <a href="#!register" class="text-primary text-decoration-none">Đăng ký</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+    <div class="container p-0">
+        <footer class="" ng-include="'./components/footer.html'"></footer>
+    </div>
+    <script src="./bootstrap-5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

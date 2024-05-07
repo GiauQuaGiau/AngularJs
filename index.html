@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myapp">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./bootstrap-5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/main.css">
+    <script src="https://kit.fontawesome.com/cc7f632854.js" crossorigin="anonymous"></script>
+
+</head>
+
+<body ng-controller="myctrl" class="position-relative">
+    <div ng-if="loading" class="bg-white position-fixed w-100 d-flex align-items-center justify-content-center"
+        style="height: 100vh; z-index: 100000 !important;">
+        <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+        <span class="ms-2">Đang tải...</span>
+    </div>
+    <header class="row container-md mx-auto p-0 ">
+        <nav class="navbar navbar-expand-lg bg-body col-sm-12 ">
+            <div class="container-fluid d-flex justify-content-between px-3 px-md-0">
+                <a class="navbar-brand mx-0 me-md-3" href="#"><img src="./img/logo.png" width="50" alt=""></a>
+                <form class="" role="search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Bạn muốn chôm gì?"
+                            aria-label="Bạn muốn chôm gì?" aria-describedby="search" ng-model="keyword"
+                            ng-model-options="{debounce: 1000}">
+                        <a href="#!result" class="btn btn-outline-primary px-4" type="button" id="search"><i
+                                class="fa-solid fa-magnifying-glass"></i></a>
+                    </div>
+                </form>
+
+                <button class="navbar-toggler px-1" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+                    <ul class="navbar-nav mb-2 mb-lg-0 ">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#!trangchu">
+                                <i class="fa-solid fa-house me-1"></i>Trang chủ
+                            </a>
+
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"><i
+                                    class="fa-solid fa-face-smile-wink me-1"></i>Tài khoản</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#!login">Đăng nhập</a></li>
+                                <li><a class="dropdown-item" href="#!register">Đăng ký</a></li>
+                                <li><a class="dropdown-item" href="#!forgot">Quên mật khẩu</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="#">Hồ sơ cá nhân</a></li>
+                                <li><a class="dropdown-item" href="#">Đổi mật khẩu</a></li>
+                                <li><a class="dropdown-item" href="#">Đăng xuất</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+
+                                <li><a class="dropdown-item" href="#">Đơn đặt hàng</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link position-relative" href="#!cart">
+                                <i class="fa-solid fa-cart-shopping"></i>
+                                <span class="position-absolute top-0 badge rounded-pill bg-danger fs-8px">
+                                    {{ countCart() }}
+                                    <span class="visually-hidden">unread messages</span>
+                                </span>
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="col-sm-12 d-flex flex-column flex-md-row justify-content-between">
+            <ul class="list-group list-group-horizontal border-0 d-none d-md-flex">
+                <li class="list-group-item border-0 px-2"><a href="#"
+                        class="list-group-item-action text-decoration-none" aria-current="true">Trái cây</a></li>
+                <li class="list-group-item border-0 px-2"><a href="#"
+                        class="list-group-item-action text-decoration-none">Thịt</a></li>
+                <li class="list-group-item border-0 px-2"><a href="#"
+                        class="list-group-item-action text-decoration-none">Trứng</a></li>
+                <li class="list-group-item border-0 px-2"><a href="#"
+                        class="list-group-item-action text-decoration-none">Rau củ quả</a></li>
+                <li class="list-group-item border-0 px-2"><a href="#"
+                        class="list-group-item-action text-decoration-none">Sữa</a></li>
+                <li class="list-group-item border-0 px-2"><a href="#"
+                        class="list-group-item-action text-decoration-none">Bơ</a></li>
+                <li class="list-group-item border-0 px-2"><a href="#"
+                        class="list-group-item-action text-decoration-none">Phô mai</a></li>
+                <li class="list-group-item border-0 px-2"><a href="#"
+                        class="list-group-item-action text-decoration-none">Hải sản</a></li>
+            </ul>
+            <ul class="list-group list-group-horizontal">
+                <li class="list-group-item border-0 px-2"><i class="fa-solid fa-location-dot"></i></li>
+                <li class="list-group-item border-0 px-2">Giao đến</li>
+                <li class="list-group-item border-0 px-2 text-decoration-underline "><a href="#">H. Đức Hòa, X. Đức Hòa
+                        Hạ, Long An</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <div class="">
+        <div ng-view></div>
+    </div>
+    <script src="./bootstrap-5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./js/angular.min.js"></script>
+    <script src="./js/angular-route.min.js"></script>
+    <script src="./js/data.js"></script>
+
+    <script>
+        var app = angular.module('myapp', ['ngRoute']);
+
+        app.config(function ($routeProvider) {
+            $routeProvider
+                .when("/", {
+                    templateUrl: './home.html?' + Math.random(),
+                    controller: 'homeCtrl',
+                })
+                .when("/trangchu", {
+                    templateUrl: './home.html?' + Math.random(),
+                    controller: 'homeCtrl',
+                })
+                .when("/cart", {
+                    templateUrl: './cart.html?' + Math.random(),
+                    controller: 'cartCtrl',
+                })
+                .when("/result", {
+                    templateUrl: './resultPage.html?' + Math.random(),
+                    controller: 'resultCtrl',
+                })
+                .when("/login", {
+                    templateUrl: './login.html?' + Math.random(),
+                    controller: 'loginCtrl',
+                })
+                .when("/register", {
+                    templateUrl: './register.html?' + Math.random(),
+                    controller: 'registerCtrl',
+                })
+                .when("/danhmuc/:id", {
+                    templateUrl: './danhmuc.html?' + Math.random(),
+                    controller: 'danhmucCtrl'
+                })
+                .when("/detail/:id", {
+                    templateUrl: './detail.html?' + Math.random(),
+                    controller: 'detailCtrl'
+                })
+                .otherwise({
+                    template: '<h1 class="text-center text-danger"> 404 - Không tìm thấy trang </h1>'
+                })
+
+        });
+        app.run(function ($rootScope) {
+            $rootScope.$on('$routeChangeStart', function () {
+                $rootScope.loading = true;
+            });
+            $rootScope.$on('$routeChangeSuccess', function () {
+                $rootScope.loading = false;
+            });
+            $rootScope.$on('$routeChangeError', function () {
+                $rootScope.loading = false;
+                alert('Lỗi, không tải được template');
+            });
+        })
+
+        app.controller('myctrl', function ($scope) {
+            $scope.giohang = []
+            $scope.accounts = [
+                { username: 'admin', password: 'admin@123' },
+                { username: 'admin1', password: 'admin1@123' },
+                { username: 'admin2', password: 'admin2@123' }
+            ]
+            $scope.loged = false
+            $scope.sanpham = products;
+            $scope.danhmuc = danhmuc;
+
+            $scope.title = '';
+            $scope.keyword = '';
+            $scope.sapxep = '';
+
+            $scope.addCart = function (sanpham, soluong = 1) {
+                if ($scope.giohang.filter(i => i.id == sanpham.id).length == 0) {
+                    //chưa có sp trong cart
+                    sanpham.soluong = soluong;
+                    sanpham.myCheck = false;
+                    $scope.giohang.push(sanpham);
+                    // console.log($scope.giohang);
+                } else {
+                    //có sp trong cart
+                    $scope.giohang.filter(i => i.id == sanpham.id)[0].soluong += soluong
+                    // console.log($scope.giohang);
+                }
+
+            }
+
+            $scope.countCart = function () {
+                let sum = 0;
+                for (sp of $scope.giohang) {
+                    sum += sp.soluong
+                }
+                return sum;
+            }
+        })
+
+        app.controller('cartCtrl', function ($scope) {
+            $scope.$parent.title = 'Giỏ hàng'
+            $scope.logSP = function () {
+                console.log($scope.giohang[0]);
+            }
+            $scope.tongthanhtien = function () {
+                let sum = 0;
+                for (sp of $scope.giohang) {
+                    if (sp.myCheck == true) {
+                        sum += sp.soluong * sp.gia
+                    }
+                }
+                return sum;
+            }
+            $scope.checkAll = false;
+            if ($scope.$parent.giohang.length == 0) {
+                $scope.checkAll = false;
+            }
+            $scope.checkAllPro = function () {
+                if ($scope.checkAll == false) {
+                    $scope.checkAll = true;
+                    for (let i = 0; i < $scope.$parent.giohang.length; i++) {
+                        $scope.$parent.giohang[i].myCheck = true
+                    }
+                } else {
+                    $scope.checkAll = false;
+                    for (let i = 0; i < $scope.$parent.giohang.length; i++) {
+                        $scope.$parent.giohang[i].myCheck = false
+                    }
+                }
+            }
+            $scope.remove1pro = function (id) {
+                $scope.$parent.giohang = $scope.$parent.giohang.filter(i => i.id != id)
+            }
+            $scope.removeAll = function () {
+                $scope.$parent.giohang = []
+            }
+            $scope.tang = function (i) {
+                $scope.$parent.giohang[i].soluong++
+            }
+            $scope.giam = function (i) {
+                if ($scope.$parent.giohang[i].soluong > 1) {
+                    $scope.$parent.giohang[i].soluong--
+                } else {
+                    $scope.$parent.giohang[i].soluong = 1
+                }
+            }
+            $scope.Mua = function (i) {
+                if ($scope.giohang.length > 0) {
+                    for (sp of $scope.giohang) {
+                    if (sp.myCheck == true) {
+                        if (confirm('Bạn có chắt muốn mua những sản phẩm này!')) {
+                            alert('Đặt hàng thành công')
+                        }
+                        return;
+                    }
+                }
+                alert('Hãy chọn ít nhất một sản phẩm muốn mua')
+                }
+            }
+
+        })
+
+        app.controller('detailCtrl', function ($scope, $routeParams, $route) {
+            let id = $routeParams.id
+            $scope.p = $scope.sanpham.filter(i => i.id == id)[0]
+
+            $scope.sl = 1;
+            $scope.tang = function (i) {
+                $scope.sl++
+            }
+            $scope.giam = function (i) {
+                if ($scope.sl > 1) {
+                    $scope.sl--
+                } else {
+                    $scope.sl = 1
+                }
+            }
+
+            document.getElementById("toggleButton").addEventListener("click", function () {
+                var blockTitleWrapper = document.getElementById("blockTitleWrapper");
+                var toggleButton = document.getElementById("toggleButton");
+
+                if (blockTitleWrapper.classList.contains("d-none")) {
+                    blockTitleWrapper.classList.remove("d-none");
+                    toggleButton.innerText = "Thu Gọn Nội Dung";
+                } else {
+                    blockTitleWrapper.classList.add("d-none");
+                    toggleButton.innerText = "Xem Thêm Nội Dung";
+                }
+            });
+        })
+
+        app.controller('loginCtrl', function ($scope, $window) {
+            $scope.exampleCheck1 = false
+            $scope.checkAcc = function (user, pass) {
+                var dk = $scope.accounts.find(function (account) {
+                    return account.username == user && account.password == pass;
+                });
+
+                if (dk) {
+                    alert('Đăng nhập thành công!');
+                    $window.location.href = '#!';
+                } else {
+                    alert('Đăng nhập thất bại. tên tài khoản hoặc mật khẩu không chính xác');
+                }
+            }
+        })
+
+        app.controller('registerCtrl', function ($scope) {
+
+            // $scope.username = ''
+            // $scope.password = ''
+            $scope.exampleCheck1 = false
+            $scope.saveAcc = function (user, pass) {
+                $scope.$parent.accounts.push({
+                    username: user,
+                    password: pass
+                })
+                alert('Tài khoản đã được tạo')
+
+            }
+        })
+        app.controller('resultCtrl', function ($scope) { })
+        app.controller('danhmucCtrl', function ($scope) { })
+        app.controller('homeCtrl', function ($scope) {
+            $scope.$parent.title = 'Trang chủ'
+            let gioihan = 12
+            $scope.phantrang = {
+                gioihan: gioihan,
+                sotrang: Math.ceil($scope.sanpham.length / gioihan),
+                page: 1,
+            }
+            $scope.btnXemthem = 'Xem thêm';
+            $scope.log = function () {
+                console.log($scope.phantrang.gioihan);
+
+            }
+            $scope.xemthem = function () {
+                if ($scope.phantrang.gioihan < $scope.sanpham.length) {
+                    $scope.phantrang.gioihan += 6;
+                    if ($scope.phantrang.gioihan > $scope.sanpham.length) {
+                        $scope.btnXemthem = 'Ẩn bớt'
+                    }
+                } else {
+                    $scope.phantrang.gioihan = gioihan;
+                    $scope.btnXemthem = 'Xem thêm';
+                }
+            }
+        })
+
+    </script>
+</body>
+
+</html>

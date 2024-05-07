@@ -1,0 +1,218 @@
+
+<head><title>Giỏ hàng</title></head>
+    <a href="#"
+        class="bg-warning-subtle d-flex justify-content-center align-items-center p-2 text-decoration-none text-secondary-emphasis">
+        <picture class="webpimg-container">
+            <source type="image/webp" srcset="./img/freeship.png"><img
+                class="WebpImg__StyledImg-sc-h3ozu8-0 fWjUGo title-img" src="./img/freeship.png" alt="icon" width="81"
+                height="12" srcset="./img/freeship.png">
+        </picture>
+        <span class="lh-1 mx-2">mỗi ngày, tự động áp dụng không cần săn mã</span>
+        <i class="fa-solid fa-chevron-right my-1 text-secondary"></i>
+    </a>
+    <main class="bg-body-secondary py-3 ">
+        <div class="container row mx-auto bg-white rounded-2 pe-2 bg-body-secondary px-0">
+            <h2 class="mb-3 bg-white rounded-2 py-2">GIỎ HÀNG</h2>
+            
+            <div class="rounded-2 col-12 col-md-9 p-0 pe-md-3 overflow-hidden">
+                <!-- have cart -->
+                <table class="table cart-sp text-center align-middle m-0 rounded-2 overflow-hidden">
+                    <thead class="border-primary">
+                        <tr>
+                            <th scope="col" class="table-primary">
+                                <!-- <input type="checkbox" ng-model="checkAll" ng-click="checkAllPro()"> -->
+                                <i class="{{ checkAll == true ? 'text-primary':'' }} fa-regular fa-square-check" ng-click="checkAllPro()" ng-if="checkAll == true"></i>
+                                <i class="{{ checkAll == false ? '':'' }}fa-regular fa-square" ng-click="checkAllPro()" ng-if="checkAll == false"></i>
+                            </th>
+                            <th scope="col" class="table-primary"></th>
+                            <th scope="col" class="table-primary">Sản phẩm</th>
+                            <th scope="col" class="table-primary">Đơn giá</th>
+                            <th scope="col" class="table-primary">Số lượng</th>
+                            <th scope="col" class="table-primary">Thành tiền</th>
+                            <th scope="col" class="table-primary"><i class="fa-regular fa-trash-can"
+                                    data-bs-toggle="tooltip" data-bs-placement="bottom"
+                                    data-bs-custom-class="custom-tooltip" data-bs-title="Xóa mục đã chọn"></i></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="border-top" ng-repeat="i in giohang">
+                            <!-- <td><input type="checkbox" ng-model="myCheck" ng-checked="checkAll" id=""></td> -->
+                            <td><input type="checkbox" ng-model="i.myCheck" id="">{{  }}</td>
+                            <td><img src="./img/products/{{ i.urlAnh }}" class="rounded mx-auto" width="100" alt="..."></td>
+                            <td>{{ i.tenSanPham }}</td>
+                            <td>{{ i.gia | number }} VNĐ</td>
+                            <td>
+                                <div class="input-group justify-content-center">
+                                    <button class="btn rounded-start border border-end-0 {{ i.soluong == 1 ? 'disabled':'' }}" type="button"
+                                        id="btnMinus" ng-click="giam($index)">-</button>
+                                    <input type="number" name="quantity" class="border text-center " ng-model="i.soluong" min="1"
+                                        id="quantity" style="height: 40px; width: 40px;">
+                                    <button class="btn rounded-end border border-start-0" type="button"
+                                        id="btnPlus" ng-click="tang($index)">+</button>
+                                </div>
+                            </td>
+                            <td>{{ i.gia * i.soluong | number }} VNĐ</td>
+                            <td><a href="" ng-click="remove1pro(i.id)"><i class="fa-regular fa-trash-can"></i></a></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="form-group" ng-if="countCart() !== 0">
+                    <button class="btn btn-outline-primary" ng-click="removeAll()">Xóa tất cả</button>
+                </div>
+                <!-- no cart -->
+                <div class="text-center bg-white rounded-bottom py-5" ng-if="countCart() == 0" >
+                    <span>
+                        <img src="./img/empty-cart.png" class="w-30" alt=""><br>
+                        <a href="#!" class="btn btn-outline-primary mt-2">Lắp đầy giỏ hàng</a>
+                    </span>
+                </div>
+            </div>
+            <div class="rounded-2 col-12 col-md-3 p-0">
+                <div class="border rounded-2 p-2 bg-white ">
+                    <div class="d-flex justify-content-between">
+                        <span class="">Giao tới</span>
+                        <a href="" class="text-decoration-none">Thay đổi</a>
+                    </div>
+                    <div class="d-flex ">
+                        <span class="fw-medium me-2">Nguyễn Duy -</span>
+                        <span class="fw-medium ">0969123258</span>
+                    </div>
+                    <div class="">
+                        <span class="badge text-bg-danger">Nhà riêng</span>
+                        <span class="text-secondary">285, TCH10, Phường Tân Chánh Hiệp, Quận 12, Hồ Chí Minh</span>
+                    </div>
+                </div>
+                <div class="border rounded-2 p-2 bg-white mt-3">
+                    <div class="">
+                        <div class="d-flex justify-content-between w-100">
+                            <span class="">Tiki Khuyến Mãi</span>
+                            <a href="" class="text-decoration-none text-secondary" data-bs-toggle="tooltip"
+                                data-bs-placement="bottom" data-bs-custom-class="custom-tooltip"
+                                data-bs-title="Áp dụng tối đa 1 Mã giảm giá Sản Phẩm và 1 Mã Vận Chuyển">Có thể chọn 2
+                                <i class="fa-solid fa-circle-info ms-2"></i>
+                            </a>
+                        </div>
+                        <div class="d-flex justify-content-between w-100 mt-2">
+                            <a href="" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#exampleModal" ><i class="fa-solid fa-ticket me-2"></i>Chọn hoặc nhập Khuyến mãi khác</a>
+                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="MssModalLabel"
+                                aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h1 class="modal-title fs-5" id="MssModalLabel">Ưu đãi</h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body overflow-auto" style="height: 40vh !important;">
+                                            <div class="w-100 d-flex flex-column">
+                                                <legend class="fs-6 mb-3">Các mã giảm giá khác</legend>
+                                                <span class="">
+                                                    <div class="d-flex border rounded-3 p-2 mb-3">
+                                                        <img class="w-10" src="./img/detail/tiki.png" alt="">
+                                                        <span class="d-flex flex-column w-70 ps-3">
+                                                            <div class="d-flex flex-column">
+                                                                <strong class="">Giảm 20k</strong>
+                                                                <span class="">Cho đơn hàng từ 140k</span>
+                                                            </div>
+                                                            <div
+                                                                class="d-flex justify-content-between align-items-center">
+                                                                <span class="">HSD: 21/07/23</span>
+                                                                <button type="button"
+                                                                    class="btn btn-outline-primary">Lụm</button>
+                                                            </div>
+                                                        </span>
+                                                    </div>
+                                                    <div class="d-flex border rounded-3 p-2 mb-3">
+                                                        <img class="w-10" src="./img/detail/tiki.png" alt="">
+                                                        <span class="d-flex flex-column w-70 ps-3">
+                                                            <div class="d-flex flex-column">
+                                                                <strong class="">Giảm 30k</strong>
+                                                                <span class="">Cho đơn hàng từ 249k</span>
+                                                            </div>
+                                                            <div
+                                                                class="d-flex justify-content-between align-items-center">
+                                                                <span class="">HSD: 21/07/23</span>
+                                                                <button type="button"
+                                                                    class="btn btn-outline-primary">Lụm</button>
+                                                            </div>
+                                                        </span>
+                                                    </div>
+                                                    <div class="d-flex border rounded-3 p-2 mb-3">
+                                                        <img class="w-10" src="./img/detail/tiki.png" alt="">
+                                                        <span class="d-flex flex-column w-70 ps-3">
+                                                            <div class="d-flex flex-column">
+                                                                <strong class="">Giảm 69k</strong>
+                                                                <span class="">Cho đơn hàng từ 340k</span>
+                                                            </div>
+                                                            <div
+                                                                class="d-flex justify-content-between align-items-center">
+                                                                <span class="">HSD: 21/07/23</span>
+                                                                <button type="button"
+                                                                    class="btn btn-outline-primary">Lụm</button>
+                                                            </div>
+                                                        </span>
+                                                    </div>
+                                                    <div class="d-flex border rounded-3 p-2 mb-3">
+                                                        <img class="w-10" src="./img/detail/tiki.png" alt="">
+                                                        <span class="d-flex flex-column w-70 ps-3">
+                                                            <div class="d-flex flex-column">
+                                                                <strong class="">Giảm 15k</strong>
+                                                                <span class="">Cho đơn hàng từ 69k</span>
+                                                            </div>
+                                                            <div
+                                                                class="d-flex justify-content-between align-items-center">
+                                                                <span class="">HSD: 21/07/23</span>
+                                                                <button type="button"
+                                                                    class="btn btn-outline-primary">Lụm</button>
+                                                            </div>
+                                                        </span>
+                                                    </div>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                data-bs-dismiss="modal">Đóng</button>
+                                            <button type="button" class="btn btn-primary">Lụm hết</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="border rounded-2 p-2 bg-white mt-3">
+                    <div class="border-bottom">
+                        <div class="d-flex justify-content-between pb-2">
+                            <span class="text-secondary">Tạm tính</span>
+                            <span class="text-body">{{ tongthanhtien() | number }} VNĐ</span>
+                        </div>
+                        <div class="d-flex justify-content-between py-1">
+                            <span class="text-secondary">Giảm giá</span>
+                            <span class="text-body">0đ</span>
+                        </div>
+                    </div>
+                    <div class="border-bottom">
+                        <div class="d-flex justify-content-between py-2 align-items-center">
+                            <span class="">Tổng tiền</span>
+                            <span class="d-flex flex-column text-center">
+                                <h3 class="fs-6 text-danger" ng-if="tongthanhtien() == 0">Vui lòng chọn sản phẩm</h3>
+                                <h3 class="fs-6 text-danger" ng-if="tongthanhtien() > 0">{{ tongthanhtien() | number }} VNĐ</h3>
+                                <span class="fs-12px d-block">(Đã bao gồm VAT nếu có)</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-danger w-100 mt-3" ng-click="Mua()">Mua Hàng</button>
+            </div>
+        </div>
+    </main>
+    <footer class="container p-0"><div class="" ng-include="'./components/footer.html'"></div></footer>
+    <script src="./bootstrap-5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+        const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+    </script>
+</body>
+
+</html>

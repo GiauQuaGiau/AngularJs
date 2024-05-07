@@ -1,0 +1,253 @@
+
+<head><title>Kết quả</title></head>
+
+<a href="#"
+    class="bg-warning-subtle d-flex justify-content-center align-items-center p-2 text-decoration-none text-secondary-emphasis">
+    <picture class="webpimg-container">
+        <source type="image/webp" srcset="./img/freeship.png"><img
+            class="WebpImg__StyledImg-sc-h3ozu8-0 fWjUGo title-img" src="./img/freeship.png" alt="icon" width="81"
+            height="12" srcset="./img/freeship.png">
+    </picture>
+    <span class="lh-1 mx-2">mỗi ngày, tự động áp dụng không cần săn mã</span>
+    <i class="fa-solid fa-chevron-right my-1 text-secondary"></i>
+</a>
+<main class="bg-body-secondary pb-0" style="--bs-bg-opacity: 1;">
+    <div class="container d-flex justify-content-between mx-auto p-2 ">
+        <div class="position-fixed z-3 d-block d-md-none">
+            <a class="btn btn-primary" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button"
+                aria-controls="offcanvasExample">
+                <i class="fa-solid fa-bars"></i>
+            </a>
+
+            <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample"
+                aria-labelledby="offcanvasExampleLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="offcanvasExampleLabel">Danh mục</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <div class="p-0 rounded-3" style="max-height: 100vh;">
+                        <div class="list-group p-2 bg-white mb-2">
+                            <strong class="px-3 py-2">Nổi bật</strong>
+                            <a href="#"
+                                class="list-group-item list-group-item-action border-0 list-group-item-light rounded-3 d-flex align-items-center fs-6"
+                                aria-current="true">
+                                <img src="./img/list/chatgpt.png" class="object-fit-contain rounded-3 me-2" alt=""
+                                    width="32" height="">
+                                Tiki ChatGPT
+                            </a>
+                            <a href="#"
+                                class="list-group-item list-group-item-action border-0 list-group-item-light rounded-3 d-flex align-items-center fs-6"
+                                aria-current="true">
+                                <img src="./img/list/astra.png" class="object-fit-contain rounded-3 me-2" alt=""
+                                    width="32" height="">
+                                Astra Reward
+                            </a>
+                            <a href="#"
+                                class="list-group-item list-group-item-action border-0 list-group-item-light rounded-3 d-flex align-items-center fs-6"
+                                aria-current="true">
+                                <img src="./img/list/aschange.png" class="object-fit-contain rounded-3 me-2" alt=""
+                                    width="32" height="">
+                                Tiki Exchange
+                            </a>
+                            <a href="#"
+                                class="list-group-item list-group-item-action border-0 list-group-item-light rounded-3 d-flex align-items-center fs-6"
+                                aria-current="true">
+                                <img src="./img/list/saleday.png" class="object-fit-contain rounded-3 me-2" alt=""
+                                    width="32" height="">
+                                Giá Rẻ Mỗi Ngày
+                            </a>
+                            <a href="#"
+                                class="list-group-item list-group-item-action border-0 list-group-item-light rounded-3 d-flex align-items-center fs-6"
+                                aria-current="true">
+                                <img src="./img/list/xakho.png" class="object-fit-contain rounded-3 me-2" alt=""
+                                    width="32" height="">
+                                Xả kho
+                            </a>
+                            <a href="#"
+                                class="list-group-item list-group-item-action border-0 list-group-item-light rounded-3 d-flex align-items-center fs-6"
+                                aria-current="true">
+                                <img src="./img/list/mgg.png" class="object-fit-contain rounded-3 me-2" alt=""
+                                    width="32" height="">
+                                Mã giảm giá
+                            </a>
+                            <a href="#"
+                                class="list-group-item list-group-item-action border-0 list-group-item-light rounded-3 d-flex align-items-center fs-6"
+                                aria-current="true">
+                                <img src="./img/list/vi.png" class="object-fit-contain rounded-3 me-2" alt="" width="32"
+                                    height="">
+                                Ưu đãi thẻ, ví
+                            </a>
+                            <a href="#"
+                                class="list-group-item list-group-item-action border-0 list-group-item-light rounded-3 d-flex align-items-center fs-6"
+                                aria-current="true">
+                                <img src="./img/list/napthe.png" class="object-fit-contain rounded-3 me-2" alt=""
+                                    width="32" height="">
+                                Đóng tiền, nạp thẻ
+                            </a>
+                            <a href="#"
+                                class="list-group-item list-group-item-action border-0 list-group-item-light rounded-3 d-flex align-items-center fs-6"
+                                aria-current="true">
+                                <img src="./img/list/trasau.png" class="object-fit-contain rounded-3 me-2" alt=""
+                                    width="32" height="">
+                                Mua trước trả sau
+                            </a>
+                            <a href="#"
+                                class="list-group-item list-group-item-action border-0 list-group-item-light rounded-3 d-flex align-items-center fs-6"
+                                aria-current="true">
+                                <img src="./img/list/baohiem.png" class="object-fit-contain rounded-3 me-2" alt=""
+                                    width="32" height="">
+                                Bảo hiểm Tiki360
+                            </a>
+                        </div>
+                        <div class="list-group p-2 bg-white mb-2">
+                            <strong class="px-3 py-2">Danh mục</strong>
+                            <!-- repeat danh mục -->
+                            <a href="#!danhmuc/{{ i.id }}" ng-repeat="i in danhmuc"
+                                class="list-group-item list-group-item-action border-0 list-group-item-light rounded-3 d-flex align-items-center fs-6"
+                                aria-current="true">
+                                <img src="./img/list/{{ i.img }}" class="object-fit-contain rounded-3 me-2" alt=""
+                                    width="32" height="">
+                                {{ i.name }}
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="p-0 overflow-y-scroll position-sticky top-16 rounded-3 d-none d-sm-none d-md-block"
+            style="max-height: 100vh; width: 230px;">
+            <div class="list-group p-2 bg-white mb-2">
+                <strong class="px-3 py-2">Nổi bật</strong>
+                <a href="#"
+                    class="list-group-item list-group-item-action border-0 list-group-item-light rounded-3 d-flex align-items-center fs-6"
+                    aria-current="true">
+                    <img src="./img/list/chatgpt.png" class="object-fit-contain rounded-3 me-2" alt="" width="32"
+                        height="">
+                    Tiki ChatGPT
+                </a>
+                <a href="#"
+                    class="list-group-item list-group-item-action border-0 list-group-item-light rounded-3 d-flex align-items-center fs-6"
+                    aria-current="true">
+                    <img src="./img/list/astra.png" class="object-fit-contain rounded-3 me-2" alt="" width="32"
+                        height="">
+                    Astra Reward
+                </a>
+                <a href="#"
+                    class="list-group-item list-group-item-action border-0 list-group-item-light rounded-3 d-flex align-items-center fs-6"
+                    aria-current="true">
+                    <img src="./img/list/aschange.png" class="object-fit-contain rounded-3 me-2" alt="" width="32"
+                        height="">
+                    Tiki Exchange
+                </a>
+                <a href="#"
+                    class="list-group-item list-group-item-action border-0 list-group-item-light rounded-3 d-flex align-items-center fs-6"
+                    aria-current="true">
+                    <img src="./img/list/saleday.png" class="object-fit-contain rounded-3 me-2" alt="" width="32"
+                        height="">
+                    Giá Rẻ Mỗi Ngày
+                </a>
+                <a href="#"
+                    class="list-group-item list-group-item-action border-0 list-group-item-light rounded-3 d-flex align-items-center fs-6"
+                    aria-current="true">
+                    <img src="./img/list/xakho.png" class="object-fit-contain rounded-3 me-2" alt="" width="32"
+                        height="">
+                    Xả kho
+                </a>
+                <a href="#"
+                    class="list-group-item list-group-item-action border-0 list-group-item-light rounded-3 d-flex align-items-center fs-6"
+                    aria-current="true">
+                    <img src="./img/list/mgg.png" class="object-fit-contain rounded-3 me-2" alt="" width="32" height="">
+                    Mã giảm giá
+                </a>
+                <a href="#"
+                    class="list-group-item list-group-item-action border-0 list-group-item-light rounded-3 d-flex align-items-center fs-6"
+                    aria-current="true">
+                    <img src="./img/list/vi.png" class="object-fit-contain rounded-3 me-2" alt="" width="32" height="">
+                    Ưu đãi thẻ, ví
+                </a>
+                <a href="#"
+                    class="list-group-item list-group-item-action border-0 list-group-item-light rounded-3 d-flex align-items-center fs-6"
+                    aria-current="true">
+                    <img src="./img/list/napthe.png" class="object-fit-contain rounded-3 me-2" alt="" width="32"
+                        height="">
+                    Đóng tiền, nạp thẻ
+                </a>
+                <a href="#"
+                    class="list-group-item list-group-item-action border-0 list-group-item-light rounded-3 d-flex align-items-center fs-6"
+                    aria-current="true">
+                    <img src="./img/list/trasau.png" class="object-fit-contain rounded-3 me-2" alt="" width="32"
+                        height="">
+                    Mua trước trả sau
+                </a>
+                <a href="#"
+                    class="list-group-item list-group-item-action border-0 list-group-item-light rounded-3 d-flex align-items-center fs-6"
+                    aria-current="true">
+                    <img src="./img/list/baohiem.png" class="object-fit-contain rounded-3 me-2" alt="" width="32"
+                        height="">
+                    Bảo hiểm Tiki360
+                </a>
+            </div>
+            <div class="list-group p-2 bg-white mb-2">
+                <strong class="px-3 py-2">Danh mục</strong>
+                <a href="#!danhmuc/{{ i.id }}" ng-repeat="i in danhmuc"
+                    class="list-group-item list-group-item-action border-0 list-group-item-light rounded-3 d-flex align-items-center fs-6"
+                    aria-current="true">
+                    <img src="./img/list/{{ i.img }}" class="object-fit-contain rounded-3 me-2" alt="" width="32"
+                        height="">
+                    {{ i.name }}
+                </a>
+
+            </div>
+
+        </div>
+        <div class="py-0 text-center rounded-3 home-left-content">
+            <div class="text-start p-2 d-flex align-items-center bg-white rounded-2">
+                <h5 class="me-auto">Sắp xếp</h5>
+                <button class="btn py-1 mx-1 {{ sapxep == 'gia' ? 'btn-primary':'btn-outline-primary'}}"
+                    ng-click="sapxep = 'gia'">Tăng dần</button>
+                <button class="btn py-1 mx-1 {{ sapxep == '-gia' ? 'btn-primary':'btn-outline-primary'}}"
+                    ng-click="sapxep = '-gia'">Giảm dần</button>
+                <button class="btn py-1 mx-1 {{ sapxep == '-rating' ? 'btn-primary':'btn-outline-primary'}}"
+                    ng-click="sapxep = '-rating'">Đánh giá</button>
+            </div>
+            <div class=" my-3 row w-100 m-0 row bg-white m-0 rounded-2">
+                <h5 class="mt-2" ng-if="keyword !== '' && (sanpham | filter:keyword).length !== 0">Đã tìm thấy {{ (sanpham | filter:keyword).length }} sản phẩm với từ khóa"{{ keyword }}"</h5>
+                <h5 class="mt-2" ng-if="(sanpham | filter:keyword).length == 0">Không tìm thấy sản phẩm nào với từ khóa"{{ keyword }}"</h5>
+                <div class="col-6 col-lg-2 col-md-3 col-sm-4 p-1 pros-item"
+                    ng-repeat="p in sanpham | filter: keyword| orderBy: sapxep | limitTo:phantrang.gioihan:(phantrang.page - 1) * phantrang.gioihan">
+                    <div class="card">
+                        <div>
+                            <a href="#!detail/{{ p.id }}"
+                                class="text-decoration-none text-secondary-emphasis">
+                                <img src="./img/products/{{ p.urlAnh }}" class="card-img-top" alt="...">
+                                <div class="card-body p-1">
+                                    <h5 class="card-title m-0 text-center fs-6" style="height: 42px;">{{
+                                        p.tenSanPham }}</h5>
+                                    <p class="card-text mt-2">{{ p.gia | number }} vnđ</p>
+                                </div>
+                                <ul
+                                    class="d-flex align-items-center justify-content-between list-unstyled m-0 p-1 px-2">
+                                    <li class=""><span class="fs-14px me-1 fw-normal">{{ p.rating |
+                                            number:1}}</span><i class="fa-solid fa-star text-warning"></i>
+                                    </li>
+                                    <li class="fw-normal fs-12px">Đã bán: {{ p.luotBan }}</li>
+                                </ul>
+                            </a>
+                            <div class="card-body p-0">
+                                <button
+                                    class="btn btn-outline-primary border-0 rounded-0 rounded-bottom fs-13px fw-medium p-0 py-2 w-100"
+                                    ng-click="addCart(p)">Thêm vào giỏ hàng</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--  -->
+
+            </div>
+            <div class="p-3 bg-white rounded-2" ng-include="'./components/footer.html'"></div>
+        </div>
+    </div>
+</main>
+
